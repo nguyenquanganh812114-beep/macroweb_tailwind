@@ -36,8 +36,6 @@
       position: fixed;
       inset: 0;
       background: linear-gradient(to bottom, rgba(197, 160, 89, 0.4) 0%, rgba(18, 18, 18, 0.9) 100%);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       z-index: 1025;
       opacity: 0;
       visibility: hidden;
@@ -52,11 +50,6 @@
     body.mega-menu-open::after {
       opacity: 1;
       visibility: visible;
-    }
-
-    body.mega-menu-open section:not(.site-header) {
-      filter: blur(4px) grayscale(20%);
-      transition: all 0.5s ease;
     }
 
     /* Header Styles */
@@ -74,8 +67,6 @@
     .site-header.scrolled {
       background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85));
       padding: 0;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     }
 
@@ -399,16 +390,16 @@
     }
 
     /* Service Card Background Images */
-    .mega-service-card.service-web::after { background-image: url('assets/images/service-web-design.png'); }
-    .mega-service-card.service-seo::after { background-image: url('assets/images/service-seo.png'); }
-    .mega-service-card.service-ads::after { background-image: url('assets/images/service-ads.png'); }
-    .mega-service-card.service-admin::after { background-image: url('assets/images/service-admin.png'); }
-    .mega-service-card.service-server::after { background-image: url('assets/images/service-server.png'); }
-    .mega-service-card.service-social::after { background-image: url('assets/images/service-social.png'); }
-    .mega-service-card.service-branding::after { background-image: url('assets/images/service-branding.png'); }
-    .mega-service-card.service-email::after { background-image: url('assets/images/service-email.png'); }
-    .mega-service-card.service-content::after { background-image: url('assets/images/service-content.png'); }
-    .mega-service-card.service-total::after { background-image: url('assets/images/service-total.png'); }
+    .mega-service-card.service-web::after { background-image: url('../images/service-web-design.png'); }
+    .mega-service-card.service-seo::after { background-image: url('../images/service-seo.png'); }
+    .mega-service-card.service-ads::after { background-image: url('../images/service-ads.png'); }
+    .mega-service-card.service-admin::after { background-image: url('../images/service-admin.png'); }
+    .mega-service-card.service-server::after { background-image: url('../images/service-server.png'); }
+    .mega-service-card.service-social::after { background-image: url('../images/service-social.png'); }
+    .mega-service-card.service-branding::after { background-image: url('../images/service-branding.png'); }
+    .mega-service-card.service-email::after { background-image: url('../images/service-email.png'); }
+    .mega-service-card.service-content::after { background-image: url('../images/service-content.png'); }
+    .mega-service-card.service-total::after { background-image: url('../images/service-total.png'); }
 
     .mega-service-card:hover {
       border-color: rgba(197, 160, 89, 0.6);
@@ -590,7 +581,7 @@
       right: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(30, 24, 15, 0.8), rgba(10, 10, 10, 0.95)), url('assets/images/canvas-bg.jpg') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(30, 24, 15, 0.8), rgba(10, 10, 10, 0.95)), url('../images/canvas-bg.jpg') center/cover no-repeat;
       transform: translateX(100%);
       border-left: none;
       color: white;
@@ -773,8 +764,6 @@
 
     .mobile-offcanvas {
       background: linear-gradient(145deg, rgba(26, 19, 10, 0.98) 0%, rgba(45, 30, 12, 0.98) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
     }
 
     .mobile-offcanvas .offcanvas-header {
@@ -1052,7 +1041,7 @@
 
     @media (max-width: 767px) {
       .hero-bg {
-        background-image: url('assets/images/hero-bg-mb.jpg');
+        background-image: url('../images/hero-bg-mb.jpg');
       }
 
       .hero-section {
@@ -1070,7 +1059,7 @@
 
     /* Footer Styles */
     .site-footer {
-      background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85)), url('assets/images/hero-bg-pc.jpg') center/cover no-repeat;
+      background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85)), url('../images/hero-bg-pc.jpg') center/cover no-repeat;
       padding: 80px 0 20px 0;
       color: white;
     }
@@ -2453,7 +2442,6 @@
       border: 1px solid rgba(197, 160, 89, 0.2);
       position: relative;
       overflow: hidden;
-      z-index: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -2470,7 +2458,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(62, 43, 26, 0.85) 0%, rgba(0, 0, 0, 0.9) 100%);
+      background: linear-gradient(to bottom, rgba(26, 19, 10, 0.3), rgba(26, 19, 10, 0.85));
       z-index: 2;
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       border-radius: 20px;
@@ -2482,24 +2470,24 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.4;
+      opacity: 0.7;
       transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-      z-index: 1;
+      z-index: 0;
       filter: brightness(0.6) saturate(1.2);
       border-radius: 20px;
     }
 
     /* Service Card Background Images */
-    .service-card.service-web::after { background-image: url('assets/images/service-web-design.png'); }
-    .service-card.service-seo::after { background-image: url('assets/images/service-seo.png'); }
-    .service-card.service-ads::after { background-image: url('assets/images/service-ads.png'); }
-    .service-card.service-admin::after { background-image: url('assets/images/service-admin.png'); }
-    .service-card.service-server::after { background-image: url('assets/images/service-server.png'); }
-    .service-card.service-social::after { background-image: url('assets/images/service-social.png'); }
-    .service-card.service-branding::after { background-image: url('assets/images/service-branding.png'); }
-    .service-card.service-email::after { background-image: url('assets/images/service-email.png'); }
-    .service-card.service-content::after { background-image: url('assets/images/service-content.png'); }
-    .service-card.service-total::after { background-image: url('assets/images/service-total.png'); }
+    .service-card.service-web::after { background-image: url('../images/service-web-design.png'); }
+    .service-card.service-seo::after { background-image: url('../images/service-seo.png'); }
+    .service-card.service-ads::after { background-image: url('../images/service-ads.png'); }
+    .service-card.service-admin::after { background-image: url('../images/service-admin.png'); }
+    .service-card.service-server::after { background-image: url('../images/service-server.png'); }
+    .service-card.service-social::after { background-image: url('../images/service-social.png'); }
+    .service-card.service-branding::after { background-image: url('../images/service-branding.png'); }
+    .service-card.service-email::after { background-image: url('../images/service-email.png'); }
+    .service-card.service-content::after { background-image: url('../images/service-content.png'); }
+    .service-card.service-total::after { background-image: url('../images/service-total.png'); }
 
     .service-card:hover {
       transform: translateY(-12px);
@@ -2508,13 +2496,13 @@
     }
 
     .service-card:hover::before {
-      background: linear-gradient(to bottom, rgba(62, 43, 26, 0.75) 0%, rgba(0, 0, 0, 0.85) 100%);
+      background: linear-gradient(to bottom, rgba(26, 19, 10, 0.1), rgba(26, 19, 10, 0.7));
     }
 
     .service-card:hover::after {
-      transform: scale(1.08);
-      opacity: 0.75;
-      filter: brightness(0.85) saturate(1.25);
+      transform: scale(1.1);
+      opacity: 1;
+      filter: brightness(0.8) saturate(1.4);
     }
 
     /* Service Icon */
