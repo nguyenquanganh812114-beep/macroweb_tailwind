@@ -2676,7 +2676,7 @@
     }
 
     .service-card:hover .service-icon {
-      transform: scale(1.1) rotate(-5deg);
+      transform: scale(1.15) rotate(-10deg);
       box-shadow: 0 12px 28px rgba(197, 160, 89, 0.35);
     }
 
@@ -2686,9 +2686,14 @@
       font-weight: 700;
       margin-bottom: 12px;
       line-height: 1.35;
-      color: #ffffff !important;
+      color: #ffffff;
       position: relative;
       z-index: 3;
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover h3 {
+      color: #C5A059;
     }
 
     .service-card p {
@@ -2733,6 +2738,13 @@
       background: #C5A059;
       color: white;
     }
+
+    /* Stagger effect for service tags */
+    .service-card:hover .service-tag:nth-child(1) { transition-delay: 0s; }
+    .service-card:hover .service-tag:nth-child(2) { transition-delay: 0.05s; }
+    .service-card:hover .service-tag:nth-child(3) { transition-delay: 0.1s; }
+    .service-card:hover .service-tag:nth-child(4) { transition-delay: 0.15s; }
+    .service-card:hover .service-tag:nth-child(5) { transition-delay: 0.2s; }
 
     /* View Details Link */
     .service-link {
@@ -5415,142 +5427,6 @@
       }
     })();
 
-
-    // ========================================
-    // GALLERY SECTION GSAP ANIMATIONS
-    // ========================================
-    (function() {
-      const gallerySection = document.querySelector('#gallery-section');
-      if (!gallerySection) return;
-
-      // Register ScrollTrigger
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-      }
-
-      // Gallery items hover effect enhancement with GSAP
-      const galleryItems = gallerySection.querySelectorAll('.gallery-item-wrapper');
-      galleryItems.forEach((item) => {
-        const galleryItem = item.querySelector('.gallery-item');
-        const img = item.querySelector('img');
-        const overlay = item.querySelector('.gallery-overlay');
-        const tag = item.querySelector('.gallery-tag');
-        const title = item.querySelector('h4');
-
-        if (galleryItem && img) {
-          // Create hover timeline
-          const hoverTl = gsap.timeline({ paused: true });
-
-          hoverTl
-            .to(img, {
-              scale: 1.1,
-              filter: 'brightness(0.7)',
-              duration: 0.6,
-              ease: 'power2.out'
-            })
-            .to(galleryItem, {
-              y: -10,
-              boxShadow: '0 30px 60px rgba(197, 160, 89, 0.15)',
-              duration: 0.4,
-              ease: 'power2.out'
-            }, 0);
-
-          if (tag) {
-            hoverTl.to(tag, {
-              y: 0,
-              opacity: 1,
-              duration: 0.3,
-              ease: 'power2.out'
-            }, 0.1);
-          }
-
-          if (title) {
-            hoverTl.to(title, {
-              color: '#C5A059',
-              duration: 0.3,
-              ease: 'power2.out'
-            }, 0.1);
-          }
-
-          // Add hover listeners
-          galleryItem.addEventListener('mouseenter', () => hoverTl.play());
-          galleryItem.addEventListener('mouseleave', () => hoverTl.reverse());
-        }
-      });
-    })();
-
-    // SERVICES SECTION GSAP ANIMATIONS
-    (function() {
-      // Register ScrollTrigger
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Refresh after DOM is ready
-        if (document.readyState === 'complete') {
-          ScrollTrigger.refresh();
-        } else {
-          window.addEventListener('DOMContentLoaded', () => {
-            ScrollTrigger.refresh();
-          });
-        }
-
-        // Services Section Header Animation
-        const servicesLabel = document.querySelector('.services-label');
-        const servicesTitle = document.querySelector('.services-title');
-
-        // Service Cards Hover Enhancement with GSAP
-        const serviceCards = document.querySelectorAll('.service-card');
-
-        serviceCards.forEach(card => {
-          const icon = card.querySelector('.service-icon');
-          const title = card.querySelector('h3');
-          const tags = card.querySelectorAll('.service-tag');
-
-          card.addEventListener('mouseenter', () => {
-            gsap.to(icon, {
-              scale: 1.15,
-              rotation: -10,
-              duration: 0.4,
-              ease: 'back.out(1.7)'
-            });
-            gsap.to(title, {
-              color: '#C5A059',
-              duration: 0.3
-            });
-            gsap.to(tags, {
-              backgroundColor: '#C5A059',
-              color: '#ffffff',
-              duration: 0.3,
-              stagger: 0.05
-            });
-          });
-
-          card.addEventListener('mouseleave', () => {
-            gsap.to(icon, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.4,
-              ease: 'power3.out'
-            });
-            gsap.to(title, {
-              color: '#ffffff',
-              duration: 0.3
-            });
-            gsap.to(tags, {
-              backgroundColor: 'rgba(255, 255, 255, 0.12)',
-              color: '#ffffff',
-              duration: 0.3,
-              stagger: 0.05
-            });
-          });
-        });
-        
-        // Final refresh to ensure proper calculations
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-        }, 100);
-      }
-    })();
 
   </script>
 
