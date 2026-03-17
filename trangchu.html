@@ -59,11 +59,20 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    img, video, iframe {
+      max-width: 100%;
+      height: auto;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-white);
-      overflow-x: hidden;
     }
 
     /* Mega Menu Backdrop */
@@ -109,7 +118,7 @@
 
     .site-header.scrolled {
       background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85));
-      padding: 10px 0;
+      padding: 0;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
@@ -117,7 +126,7 @@
 
     @media (min-width: 992px) {
       .site-header.scrolled {
-        padding: 15px 0;
+        padding: 0;
       }
 
       .site-header.scrolled .site-header-navbar {
@@ -125,7 +134,7 @@
       }
 
       .site-header.scrolled .site-header-brand img {
-        height: 60px;
+        height: 70px;
       }
     }
 
@@ -174,6 +183,20 @@
     .site-header-brand {
       display: flex;
       align-items: center;
+    }
+
+    /* Logo size on PC */
+    @media (min-width: 992px) {
+      .site-header-brand img {
+        height: 84px !important;
+      }
+    }
+
+    /* Logo size on mobile - larger and equal across header, footer, canvas */
+    @media (max-width: 991px) {
+      .site-header-brand img {
+        height: 72px !important;
+      }
     }
 
     /* Nav Link Styles */
@@ -593,8 +616,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: 9999;
       visibility: hidden;
       overflow: hidden;
@@ -632,7 +655,7 @@
     }
 
     .site-header-glass-offcanvas .offcanvas-header .site-header-brand img {
-      height: 60px;
+      height: 72px;
       width: auto;
     }
 
@@ -1101,6 +1124,20 @@
       background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85)), url('assets/images/hero-bg-pc.jpg') center/cover no-repeat;
       padding: 80px 0 20px 0;
       color: white;
+    }
+
+    /* Footer logo size on PC - equal to header */
+    @media (min-width: 992px) {
+      .site-footer img[alt="Macroweb Logo"] {
+        height: 84px !important;
+      }
+    }
+
+    /* Footer logo size on mobile - equal to header and canvas */
+    @media (max-width: 991px) {
+      .site-footer img[alt="Macroweb Logo"] {
+        height: 72px !important;
+      }
     }
 
     .footer-cta {
@@ -1630,14 +1667,13 @@
     }
 
     .mb-container {
-      width: 105vw;
+      width: 100%;
       display: flex;
       overflow: hidden;
       position: relative;
       background: var(--primary-color);
       padding: 24px 0;
-      transform: rotate(-3deg);
-      margin-left: -2.5vw;
+      transform: rotate(-3deg) scale(1.05);
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     }
 
@@ -1765,7 +1801,7 @@
       height: 550px;
       background: radial-gradient(circle, rgba(197, 160, 89, 0.5) 0%, rgba(197, 160, 89, 0) 70%);
       bottom: -100px;
-      right: -50px;
+      right: 0;
       animation: aboutFloat2 20s infinite alternate-reverse ease-in-out;
     }
 
@@ -3897,7 +3933,7 @@
       <div class="container mx-auto px-4 lg:px-8">
         <!-- Brand Logo -->
         <a class="site-header-brand navbar-brand d-flex align-items-center" href="index.html">
-          <img src="assets/images/logo.png" alt="Macroweb Logo" height="72" class="h-16 lg:h-18">
+          <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
         </a>
 
         <!-- Mobile Toggle Button -->
@@ -4069,7 +4105,7 @@
     <div class="offcanvas-panel" id="offcanvasPanel">
       <div class="offcanvas-header">
         <a class="site-header-brand" href="index.html">
-          <img src="assets/images/logo.png" alt="Macroweb Logo" height="60">
+          <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
         </a>
         <button type="button" class="offcanvas-close-btn" id="closeOffcanvas" aria-label="Close">
           <i class="fa-solid fa-xmark"></i>
@@ -5103,7 +5139,7 @@
         <!-- Company Info -->
         <div class="lg:col-span-4">
           <a class="inline-flex items-center mb-6" href="index.html">
-            <img src="assets/images/logo.png" alt="Macroweb Logo" height="72" class="h-16 lg:h-18">
+            <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
           </a>
           <p class="text-white/60 pr-8 mb-6 leading-relaxed">
             Macroweb chuyên cung cấp các giải pháp thiết kế website chuyên nghiệp, UI/UX hiện đại và
