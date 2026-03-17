@@ -1849,7 +1849,7 @@
       left: 0;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 10px 20px rgba(0, 0, 0, 0.25);
       z-index: 2;
     }
 
@@ -1861,7 +1861,7 @@
       right: 10%;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 10px 20px rgba(0, 0, 0, 0.25);
       z-index: 1;
     }
 
@@ -3505,7 +3505,7 @@
     .news-btn-primary {
       background: linear-gradient(135deg, #C5A059 0%, #8E6A2F 100%);
       color: white;
-      padding: 12px 28px;
+      padding: 8px 8px 8px 25px;
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
@@ -3542,21 +3542,21 @@
     }
 
     .news-btn-arrow {
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
-      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      color: #ffffff;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .news-btn-primary:hover .news-btn-arrow {
       background: #ffffff;
       color: #C5A059;
-      transform: rotate(45deg);
     }
 
     /* News Card */
@@ -3572,9 +3572,8 @@
     }
 
     .news-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      border-color: rgba(197, 160, 89, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .news-card-image-wrap {
@@ -3591,7 +3590,7 @@
     }
 
     .news-card:hover .news-card-image {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .news-date-badge {
@@ -3640,11 +3639,6 @@
       color: #1a1a1a;
       margin-bottom: 12px;
       line-height: 1.4;
-      transition: color 0.3s ease;
-    }
-
-    .news-card:hover .news-card-title {
-      color: #C5A059;
     }
 
     .news-card-summary {
@@ -3658,10 +3652,10 @@
     .news-card-btn {
       background: linear-gradient(135deg, #C5A059 0%, #8E6A2F 100%);
       color: white;
-      padding: 10px 24px;
+      padding: 8px 8px 8px 20px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -3701,21 +3695,21 @@
     }
 
     .news-btn-arrow-icon {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
-      transition: all 0.3s ease;
+      font-size: 0.85rem;
+      color: #ffffff;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     .news-card-btn:hover .news-btn-arrow-icon {
       background: #ffffff;
       color: #C5A059;
-      transform: translateX(3px);
     }
 
     @media (max-width: 768px) {
@@ -3736,189 +3730,10 @@
       }
     }
 
-    /* Title Animation Support for News */
-    .news-section-title .title-line {
-      perspective: 1000px;
-    }
 
-    .news-section-title .title-line-inner {
-      transform-origin: center bottom;
-      backface-visibility: hidden;
-    }
 
-    /* News Section Enhanced Effects */
-    .news-section-label {
-      position: relative;
-      overflow: hidden;
-    }
 
-    .news-section-label::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.3), transparent);
-      animation: shimmer 3s infinite;
-    }
 
-    @keyframes shimmer {
-      0% { left: -100%; }
-      50%, 100% { left: 100%; }
-    }
-
-    /* News Card Enhanced Styles */
-    .news-card {
-      position: relative;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .news-card::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, rgba(197, 160, 89, 0.3), rgba(142, 106, 47, 0.1), rgba(197, 160, 89, 0.3));
-      border-radius: 26px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: -1;
-      filter: blur(8px);
-    }
-
-    .news-card:hover::before {
-      opacity: 1;
-    }
-
-    /* Image Mask Reveal Effect */
-    .news-card-image-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .news-card-image-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #C5A059 0%, #8E6A2F 100%);
-      z-index: 3;
-      transform: translateX(-100%);
-      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-
-    .news-card.revealed .news-card-image-wrap::before {
-      transform: translateX(100%);
-    }
-
-    /* Shine Effect on Hover */
-    .news-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.1) 50%,
-        transparent 70%
-      );
-      transform: translateX(-100%) rotate(45deg);
-      transition: transform 0.8s ease;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .news-card:hover::after {
-      transform: translateX(100%) rotate(45deg);
-    }
-
-    /* Date Badge Enhanced */
-    .news-date-badge {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .news-date-badge::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: badgeShimmer 2.5s infinite;
-    }
-
-    @keyframes badgeShimmer {
-      0%, 100% { left: -100%; }
-      50% { left: 100%; }
-    }
-
-    /* Category Tag Float Animation */
-    .news-cat-tag {
-      animation: floatTag 3s ease-in-out infinite;
-    }
-
-    @keyframes floatTag {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-
-    /* News Card Title Underline Animation */
-    .news-card-title {
-      position: relative;
-      display: inline-block;
-    }
-
-    .news-card-title::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #C5A059, #8E6A2F);
-      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .news-card:hover .news-card-title::after {
-      width: 100%;
-    }
-
-    /* Magnetic Button Effect Base */
-    .news-btn-primary {
-      transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    /* Card Entrance States */
-    .news-card {
-      opacity: 0;
-    }
-
-    .news-card.animated {
-      opacity: 1;
-    }
-
-    /* Parallax Image Container */
-    .news-card-image {
-      will-change: transform;
-      transition: transform 0.1s linear;
-    }
-
-    /* Stagger Animation Delays */
-    .news-card:nth-child(1) { --stagger-delay: 0s; }
-    .news-card:nth-child(2) { --stagger-delay: 0.15s; }
-    .news-card:nth-child(3) { --stagger-delay: 0.3s; }
-    }
-
-    /* 3D Transform Support for News Cards */
-    .news-card {
-      transform-style: preserve-3d;
-      backface-visibility: hidden;
-    }
   </style>
 </head>
 <body>
@@ -4728,7 +4543,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
             
             <!-- Step 01 -->
-            <div class="work-step-card order-1 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-1 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">01</span>
               </div>
@@ -4742,14 +4557,14 @@
             </div>
 
             <!-- Connector 1 (Step 01 → 02) - Hidden on mobile -->
-            <div class="hidden lg:flex work-step-connector absolute left-1/3 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10" data-gsap="connector">
+            <div class="hidden lg:flex work-step-connector absolute left-1/3 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10">
               <div class="work-connector-circle w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#C5A059]/30">
                 <i class="fa-solid fa-arrow-right"></i>
               </div>
             </div>
 
             <!-- Step 02 -->
-            <div class="work-step-card order-2 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-2 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">02</span>
               </div>
@@ -4763,14 +4578,14 @@
             </div>
 
             <!-- Connector 2 (Step 02 → 03) - Hidden on mobile -->
-            <div class="hidden lg:flex work-step-connector absolute left-2/3 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10" data-gsap="connector">
+            <div class="hidden lg:flex work-step-connector absolute left-2/3 top-1/4 -translate-x-1/2 -translate-y-1/2 z-10">
               <div class="work-connector-circle w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#C5A059]/30">
                 <i class="fa-solid fa-arrow-right"></i>
               </div>
             </div>
 
             <!-- Step 03 -->
-            <div class="work-step-card order-3 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-3 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">03</span>
               </div>
@@ -4784,14 +4599,14 @@
             </div>
 
             <!-- Vertical Connector (Step 03 → 04) - Hidden on mobile -->
-            <div class="hidden lg:flex step-connector absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10" data-gsap="connector-vertical">
+            <div class="hidden lg:flex step-connector absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
               <div class="connector-circle w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#C5A059]/30">
                 <i class="fa-solid fa-arrow-down"></i>
               </div>
             </div>
 
             <!-- Step 04 (Bottom row, right on desktop) -->
-            <div class="work-step-card order-6 lg:order-4 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-6 lg:order-4 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">04</span>
               </div>
@@ -4805,14 +4620,14 @@
             </div>
 
             <!-- Connector 3 (Step 04 → 05) - Hidden on mobile -->
-            <div class="hidden lg:flex work-step-connector absolute left-1/3 top-3/4 -translate-x-1/2 -translate-y-1/2 z-10" data-gsap="connector">
+            <div class="hidden lg:flex work-step-connector absolute left-1/3 top-3/4 -translate-x-1/2 -translate-y-1/2 z-10">
               <div class="work-connector-circle w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#C5A059]/30">
                 <i class="fa-solid fa-arrow-left"></i>
               </div>
             </div>
 
             <!-- Step 05 (Bottom row, middle on desktop) -->
-            <div class="work-step-card order-5 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-5 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">05</span>
               </div>
@@ -4826,14 +4641,14 @@
             </div>
 
             <!-- Connector 4 (Step 05 → 06) - Hidden on mobile -->
-            <div class="hidden lg:flex work-step-connector absolute left-2/3 top-3/4 -translate-x-1/2 -translate-y-1/2 z-10" data-gsap="connector">
+            <div class="hidden lg:flex work-step-connector absolute left-2/3 top-3/4 -translate-x-1/2 -translate-y-1/2 z-10">
               <div class="work-connector-circle w-12 h-12 bg-[#C5A059] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#C5A059]/30">
                 <i class="fa-solid fa-arrow-left"></i>
               </div>
             </div>
 
             <!-- Step 06 (Bottom row, left on desktop) -->
-            <div class="work-step-card order-4 lg:order-6 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group" data-gsap="process-card" style="opacity: 1; visibility: visible;">
+            <div class="work-step-card order-4 lg:order-6 bg-white border border-gray-200 rounded-3xl p-8 lg:p-12 lg:pb-16 h-full transition-all duration-400 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-1.5 group">
               <div class="step-header mb-8">
                 <span class="step-number-bg text-7xl lg:text-8xl font-extrabold leading-none bg-gradient-to-b from-[#C5A059] to-[#C5A059]/10 bg-clip-text text-transparent opacity-65">06</span>
               </div>
@@ -4961,9 +4776,9 @@
         </div>
 
         <!-- Pricing Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12" data-gsap="pricing-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           <!-- Pricing 1: Landing Page -->
-          <div class="svc-price-item" data-gsap="pricing-card">
+          <div class="svc-price-item">
             <div class="svc-price-icon"><i class="fa-solid fa-rocket"></i></div>
             <h3>Gói Landing Page</h3>
             <p class="svc-price-description">Phù hợp cho chiến dịch quảng cáo, giới thiệu sản phẩm đơn lẻ hoặc sự kiện.</p>
@@ -4979,7 +4794,7 @@
           </div>
 
           <!-- Pricing 2: Website Doanh Nghiệp -->
-          <div class="svc-price-item" data-gsap="pricing-card">
+          <div class="svc-price-item">
             <div class="svc-price-icon"><i class="fa-solid fa-building"></i></div>
             <h3>Website Doanh Nghiệp</h3>
             <p class="svc-price-description">Giải pháp xây dựng thương hiệu uy tín, giới thiệu dịch vụ chuyên nghiệp của công ty.</p>
@@ -4995,7 +4810,7 @@
           </div>
 
           <!-- Pricing 3: E-commerce -->
-          <div class="svc-price-item" data-gsap="pricing-card">
+          <div class="svc-price-item">
             <div class="svc-price-icon"><i class="fa-solid fa-cart-shopping"></i></div>
             <h3>E-commerce (Bán Hàng)</h3>
             <p class="svc-price-description">Website bán hàng chuyên nghiệp với đầy đủ tính năng thanh toán online và quản lý đơn hàng.</p>
@@ -5012,7 +4827,7 @@
         </div>
 
         <!-- Pricing Bottom Info -->
-        <div class="svc-price-bottom-info" data-gsap="pricing-info">
+        <div class="svc-price-bottom-info">
           <div class="svc-price-info-tag">
             <i class="fa-regular fa-calendar-check"></i> Được phép dùng thử miễn phí 30 ngày
           </div>
@@ -5036,27 +4851,27 @@
         <!-- Section Header -->
         <div class="grid grid-cols-1 lg:grid-cols-12 items-end mb-10">
           <div class="lg:col-span-7 lg:pr-12">
-            <div class="news-section-label mb-3" data-gsap="news-label">
+            <div class="news-section-label mb-3">
               <i class="fa-solid fa-asterisk"></i> Tin tức mới nhất
             </div>
-            <h2 class="news-section-title mb-0" data-gsap="news-title">
+            <h2 class="news-section-title mb-0">
               CẬP NHẬT XU HƯỚNG CÔNG NGHỆ <br> <span class="text-[#C5A059]">& CHIẾN LƯỢC MARKETING</span>
             </h2>
           </div>
           <div class="lg:col-span-5 mt-6 lg:mt-0">
-            <p class="news-section-desc mb-6" data-gsap="news-desc">
+            <p class="news-section-desc mb-6">
               Khám phá các bài viết chuyên sâu về thiết kế website, tối ưu SEO và marketing online để giúp doanh nghiệp bứt phá hiệu quả kinh doanh.
             </p>
-            <a href="blog-list.html" class="news-btn-primary" data-gsap="news-btn">
+            <a href="blog-list.html" class="news-btn-primary">
               Xem Tất cả Bài viết <span class="news-btn-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
             </a>
           </div>
         </div>
 
         <!-- Blog Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2" data-gsap="news-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
           <!-- Blog 1 -->
-          <div class="news-card" data-gsap="news-card">
+          <div class="news-card">
             <div class="news-card-image-wrap">
               <img src="assets/images/unsplash_5.jpg" alt="Blog 1" class="news-card-image">
               <div class="news-date-badge">10/02/2026</div>
@@ -5072,7 +4887,7 @@
           </div>
 
           <!-- Blog 2 -->
-          <div class="news-card" data-gsap="news-card">
+          <div class="news-card">
             <div class="news-card-image-wrap">
               <img src="assets/images/unsplash_3.jpg" alt="Blog 2" class="news-card-image">
               <div class="news-date-badge">15/02/2026</div>
@@ -5088,7 +4903,7 @@
           </div>
 
           <!-- Blog 3 -->
-          <div class="news-card" data-gsap="news-card">
+          <div class="news-card">
             <div class="news-card-image-wrap">
               <img src="assets/images/unsplash_4.jpg" alt="Blog 3" class="news-card-image">
               <div class="news-date-badge">22/02/2026</div>
@@ -5600,154 +5415,6 @@
       }
     })();
 
-    // ========================================
-    // ABOUT SECTION GSAP ANIMATIONS
-    // ========================================
-    (function() {
-      // Register ScrollTrigger if available
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-      }
-
-      const aboutSection = document.querySelector('#about-v2-section');
-      if (!aboutSection) return;
-
-      // Image boxes animation
-      const imgBox1 = aboutSection.querySelector('.about-v2-img-box-1');
-      const imgBox2 = aboutSection.querySelector('.about-v2-img-box-2');
-      const dotPattern = aboutSection.querySelectorAll('.about-v2-dot-pattern');
-
-      if (imgBox1) {
-        gsap.from(imgBox1, {
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          x: -100,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out'
-        });
-      }
-
-      if (imgBox2) {
-        gsap.from(imgBox2, {
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          x: 100,
-          opacity: 0,
-          duration: 1,
-          delay: 0.2,
-          ease: 'power3.out'
-        });
-      }
-
-      if (dotPattern.length) {
-        gsap.from(dotPattern, {
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          scale: 0,
-          opacity: 0,
-          duration: 0.8,
-          delay: 0.4,
-          ease: 'back.out(1.7)',
-          stagger: 0.1
-        });
-      }
-
-      // Mission card animation
-      const missionCard = aboutSection.querySelector('.about-v2-mission-card');
-      if (missionCard) {
-        gsap.from(missionCard, {
-          scrollTrigger: {
-            trigger: missionCard,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power3.out'
-        });
-      }
-
-      // Content animations
-      const aboutLabel = aboutSection.querySelector('.about-v2-label');
-      const aboutTitle = aboutSection.querySelector('.about-v2-title');
-      const aboutDesc = aboutSection.querySelector('.about-v2-desc');
-      const featureRows = aboutSection.querySelectorAll('.about-v2-feature-row');
-      const ctaArea = aboutSection.querySelector('.about-v2-trust');
-
-      const contentElements = [aboutLabel, aboutTitle, aboutDesc].filter(el => el);
-
-      contentElements.forEach((el, index) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 70%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.7,
-          delay: 0.1 * index,
-          ease: 'power3.out'
-        });
-      });
-
-      // Feature rows stagger animation
-      if (featureRows.length) {
-        gsap.from(featureRows, {
-          scrollTrigger: {
-            trigger: aboutSection.querySelector('.about-v2-features-list'),
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          x: 50,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: 'power3.out'
-        });
-      }
-
-      // CTA area animation
-      if (ctaArea) {
-        gsap.from(ctaArea, {
-          scrollTrigger: {
-            trigger: ctaArea,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          ease: 'power3.out'
-        });
-      }
-
-      // Decoration shapes parallax effect
-      const shapes = aboutSection.querySelectorAll('.about-decoration-shape');
-      shapes.forEach((shape, index) => {
-        gsap.to(shape, {
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1
-          },
-          y: (index + 1) * 30,
-          ease: 'none'
-        });
-      });
-    })();
 
     // ========================================
     // GALLERY SECTION GSAP ANIMATIONS
@@ -5761,63 +5428,8 @@
         gsap.registerPlugin(ScrollTrigger);
       }
 
-      // Section header animation
-      const sectionLabel = gallerySection.querySelector('.section-label');
-      const sectionTitle = gallerySection.querySelector('.section-title');
-      const sectionDesc = gallerySection.querySelector('.section-desc');
-
-      const headerElements = [sectionLabel, sectionTitle, sectionDesc].filter(el => el);
-
-      headerElements.forEach((el, index) => {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: gallerySection,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.7,
-          delay: 0.15 * index,
-          ease: 'power3.out'
-        });
-      });
-
-      // Gallery items stagger animation
-      const galleryItems = gallerySection.querySelectorAll('.gallery-item-wrapper');
-
-      if (galleryItems.length) {
-        gsap.from(galleryItems, {
-          scrollTrigger: {
-            trigger: gallerySection.querySelector('.grid'),
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 80,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out'
-        });
-      }
-
-      // Gallery footer animation
-      const galleryFooter = gallerySection.querySelector('.gallery-footer');
-      if (galleryFooter) {
-        gsap.from(galleryFooter, {
-          scrollTrigger: {
-            trigger: galleryFooter,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          ease: 'power3.out'
-        });
-      }
-
       // Gallery items hover effect enhancement with GSAP
+      const galleryItems = gallerySection.querySelectorAll('.gallery-item-wrapper');
       galleryItems.forEach((item) => {
         const galleryItem = item.querySelector('.gallery-item');
         const img = item.querySelector('img');
@@ -5867,127 +5479,6 @@
       });
     })();
 
-    // PROCESS SECTION GSAP ANIMATIONS
-    (function() {
-      // Register ScrollTrigger
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animate section header - only y position, not opacity
-        const processHeader = document.querySelector('#work-process .section-label');
-        const processTitle = document.querySelector('#work-process .section-title');
-        const processDesc = document.querySelector('#work-process .work-header-info');
-
-        if (processHeader) {
-          gsap.fromTo(processHeader, 
-            { y: 20 },
-            {
-              scrollTrigger: {
-                trigger: processHeader,
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-              },
-              y: 0,
-              duration: 0.5,
-              ease: 'power2.out'
-            }
-          );
-        }
-
-        if (processTitle) {
-          gsap.fromTo(processTitle, 
-            { y: 30 },
-            {
-              scrollTrigger: {
-                trigger: processTitle,
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-              },
-              y: 0,
-              duration: 0.6,
-              delay: 0.05,
-              ease: 'power2.out'
-            }
-          );
-        }
-
-        if (processDesc) {
-          gsap.fromTo(processDesc, 
-            { y: 20 },
-            {
-              scrollTrigger: {
-                trigger: processDesc,
-                start: 'top 90%',
-                toggleActions: 'play none none none'
-              },
-              y: 0,
-              duration: 0.6,
-              delay: 0.1,
-              ease: 'power2.out'
-            }
-          );
-        }
-
-        // Animate process cards with stagger - only animate y position, not opacity
-        const processCards = document.querySelectorAll('[data-gsap="process-card"]');
-        if (processCards.length > 0) {
-          gsap.fromTo(processCards, 
-            { y: 40 },
-            {
-              scrollTrigger: {
-                trigger: '#work-process',
-                start: 'top 85%',
-                toggleActions: 'play none none none'
-              },
-              y: 0,
-              duration: 0.6,
-              stagger: 0.08,
-              ease: 'power2.out'
-            }
-          );
-        }
-
-        // Animate connectors - only scale, not opacity
-        const connectors = document.querySelectorAll('[data-gsap="connector"]');
-        if (connectors.length > 0) {
-          gsap.fromTo(connectors, 
-            { scale: 0.5 },
-            {
-              scrollTrigger: {
-                trigger: '#work-process',
-                start: 'top 75%',
-                toggleActions: 'play none none none'
-              },
-              scale: 1,
-              duration: 0.4,
-              stagger: 0.1,
-              delay: 0.2,
-              ease: 'back.out(1.7)'
-            }
-          );
-        }
-
-        // Animate vertical connector - only scale, not opacity
-        const verticalConnector = document.querySelector('[data-gsap="connector-vertical"]');
-        if (verticalConnector) {
-          gsap.fromTo(verticalConnector, 
-            { scale: 0.5 },
-            {
-              scrollTrigger: {
-                trigger: '#work-process',
-                start: 'top 75%',
-                toggleActions: 'play none none none'
-              },
-              scale: 1,
-              duration: 0.4,
-              delay: 0.4,
-              ease: 'back.out(1.7)'
-            }
-          );
-        }
-      }
-    })();
-
     // SERVICES SECTION GSAP ANIMATIONS
     (function() {
       // Register ScrollTrigger
@@ -6007,67 +5498,9 @@
         const servicesLabel = document.querySelector('.services-label');
         const servicesTitle = document.querySelector('.services-title');
 
-        // Set initial visible state
-        if (servicesLabel) gsap.set(servicesLabel, { opacity: 1, y: 0 });
-        if (servicesTitle) gsap.set(servicesTitle, { opacity: 1, y: 0 });
-
-        if (servicesLabel) {
-          gsap.from(servicesLabel, {
-            scrollTrigger: {
-              trigger: '#services-section',
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-              once: true
-            },
-            y: 20,
-            opacity: 0.5,
-            duration: 0.5,
-            ease: 'power2.out',
-            clearProps: 'all'
-          });
-        }
-
-        if (servicesTitle) {
-          gsap.from(servicesTitle, {
-            scrollTrigger: {
-              trigger: '#services-section',
-              start: 'top 80%',
-              toggleActions: 'play none none none',
-              once: true
-            },
-            y: 30,
-            opacity: 0.5,
-            duration: 0.6,
-            delay: 0.1,
-            ease: 'power2.out',
-            clearProps: 'all'
-          });
-        }
-
-        // Service Cards Stagger Animation
-        const serviceCards = document.querySelectorAll('.service-card');
-        if (serviceCards.length > 0) {
-          // Set initial state
-          gsap.set(serviceCards, { opacity: 1, y: 0 });
-          
-          // Animate from hidden state
-          gsap.from(serviceCards, {
-            scrollTrigger: {
-              trigger: '#servicesGrid',
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-              once: true
-            },
-            y: 40,
-            opacity: 0.5,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: 'power2.out',
-            clearProps: 'all'
-          });
-        }
-
         // Service Cards Hover Enhancement with GSAP
+        const serviceCards = document.querySelectorAll('.service-card');
+
         serviceCards.forEach(card => {
           const icon = card.querySelector('.service-icon');
           const title = card.querySelector('h3');
@@ -6119,765 +5552,6 @@
       }
     })();
 
-    /* =============================================================================
-       WHY CHOOSE US SECTION - Creative GSAP Animations
-       ============================================================================= */
-    (function() {
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const whyChooseSection = document.querySelector('#wm-why-choose-us');
-        if (!whyChooseSection) return;
-
-        // Create master timeline for coordinated animations
-        const masterTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: whyChooseSection,
-            start: 'top 75%',
-            toggleActions: 'play none none none'
-          }
-        });
-
-        // 1. Section Label - Slide in from left with blur
-        const sectionLabel = whyChooseSection.querySelector('.wm-section-label');
-        if (sectionLabel) {
-          gsap.set(sectionLabel, { opacity: 0, x: -50, filter: 'blur(10px)' });
-          masterTl.to(sectionLabel, {
-            opacity: 1,
-            x: 0,
-            filter: 'blur(0px)',
-            duration: 0.8,
-            ease: 'power3.out'
-          }, 0);
-        }
-
-        // 2. Section Title - Character by character reveal
-        const sectionTitle = whyChooseSection.querySelector('.wm-section-title');
-        if (sectionTitle) {
-          const titleText = sectionTitle.innerHTML;
-          const lines = titleText.split('<br>');
-          sectionTitle.innerHTML = lines.map(line => 
-            `<span class="title-line block overflow-hidden">
-              <span class="title-line-inner block">${line}</span>
-             </span>`
-          ).join('');
-          
-          gsap.set(sectionTitle.querySelectorAll('.title-line-inner'), { 
-            y: '100%', 
-            opacity: 0,
-            rotateX: -90
-          });
-          
-          masterTl.to(sectionTitle.querySelectorAll('.title-line-inner'), {
-            y: '0%',
-            opacity: 1,
-            rotateX: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power4.out'
-          }, 0.2);
-        }
-
-        // 3. Section Description - Fade up with mask reveal
-        const sectionDesc = whyChooseSection.querySelector('.wm-section-desc');
-        if (sectionDesc) {
-          gsap.set(sectionDesc, { 
-            opacity: 0, 
-            y: 30,
-            clipPath: 'inset(100% 0% 0% 0%)'
-          });
-          masterTl.to(sectionDesc, {
-            opacity: 1,
-            y: 0,
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 0.9,
-            ease: 'power3.inOut'
-          }, 0.5);
-        }
-
-        // 4. Feature Cards - 3D Flip stagger with wave effect
-        const featureCards = whyChooseSection.querySelectorAll('.wm-feature-card');
-        if (featureCards.length > 0) {
-          gsap.set(featureCards, { 
-            opacity: 0, 
-            rotateY: -90,
-            transformOrigin: 'left center',
-            transformPerspective: 1000
-          });
-          
-          masterTl.to(featureCards, {
-            opacity: 1,
-            rotateY: 0,
-            duration: 0.8,
-            stagger: {
-              each: 0.12,
-              from: 'start'
-            },
-            ease: 'back.out(1.2)'
-          }, 0.6);
-        }
-
-        // 5. CTA Button - Elastic scale with glow pulse
-        const ctaButton = whyChooseSection.querySelector('.wm-btn-call-to-action');
-        if (ctaButton) {
-          gsap.set(ctaButton, { 
-            opacity: 0, 
-            scale: 0,
-            boxShadow: '0 0 0 0 rgba(197, 160, 89, 0)'
-          });
-          masterTl.to(ctaButton, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.7,
-            ease: 'elastic.out(1, 0.5)'
-          }, 1.2);
-          
-          // Continuous glow pulse animation
-          gsap.to(ctaButton, {
-            boxShadow: '0 0 30px 10px rgba(197, 160, 89, 0.3)',
-            duration: 1.5,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut'
-          });
-        }
-
-        // 6. Image Group - Simple fade in only (preserve corner radius visual)
-        const imageGroup = whyChooseSection.querySelector('.wm-image-group');
-        if (imageGroup) {
-          gsap.set(imageGroup, { opacity: 0 });
-          masterTl.to(imageGroup, {
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out'
-          }, 0.3);
-        }
-
-        // 7. Main Image - Simple fade in (static layout preserved)
-        const imgMain = whyChooseSection.querySelector('.wm-img-main');
-        if (imgMain) {
-          gsap.set(imgMain, { opacity: 0 });
-          masterTl.to(imgMain, {
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out'
-          }, 0.4);
-        }
-
-        // 8. Sub Image - Simple fade in (static layout preserved)
-        const imgSub = whyChooseSection.querySelector('.wm-img-sub');
-        if (imgSub) {
-          gsap.set(imgSub, { opacity: 0 });
-          masterTl.to(imgSub, {
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out'
-          }, 0.5);
-        }
-
-        // 9. Experience Badge - Simple fade in (static layout preserved)
-        const experienceBadge = whyChooseSection.querySelector('.wm-experience-badge');
-        if (experienceBadge) {
-          gsap.set(experienceBadge, { opacity: 0 });
-          masterTl.to(experienceBadge, {
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out'
-          }, 0.6);
-        }
-
-        // 10. Feature Cards - Advanced hover interactions
-        featureCards.forEach((card, index) => {
-          const icon = card.querySelector('.wm-feature-icon');
-          const title = card.querySelector('h4');
-          const desc = card.querySelector('p');
-          
-          // 3D tilt effect on mouse move
-          card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            gsap.to(card, {
-              rotateX: rotateX,
-              rotateY: rotateY,
-              transformPerspective: 1000,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-          
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              rotateX: 0,
-              rotateY: 0,
-              duration: 0.5,
-              ease: 'power2.out'
-            });
-          });
-
-          // Hover entrance effects
-          card.addEventListener('mouseenter', () => {
-            // Icon animation
-            gsap.to(icon, {
-              scale: 1.2,
-              rotation: 360,
-              duration: 0.6,
-              ease: 'back.out(1.7)'
-            });
-            
-            // Title color shift
-            gsap.to(title, {
-              color: '#C5A059',
-              x: 5,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-            
-            // Description fade in
-            gsap.to(desc, {
-              opacity: 1,
-              y: 0,
-              duration: 0.3
-            });
-            
-            // Card lift with shadow
-            gsap.to(card, {
-              y: -8,
-              boxShadow: '0 20px 40px rgba(197, 160, 89, 0.15)',
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-
-          card.addEventListener('mouseleave', () => {
-            gsap.to(icon, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.4,
-              ease: 'power3.out'
-            });
-            gsap.to(title, {
-              color: '#000000',
-              x: 0,
-              duration: 0.3
-            });
-            gsap.to(card, {
-              y: 0,
-              boxShadow: 'none',
-              duration: 0.3
-            });
-          });
-        });
-
-        // 11. Images remain static - no parallax (preserve corner radius visual)
-
-        // 12. Magnetic CTA Button effect
-        if (ctaButton) {
-          ctaButton.addEventListener('mousemove', (e) => {
-            const rect = ctaButton.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            gsap.to(ctaButton, {
-              x: x * 0.3,
-              y: y * 0.3,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-            
-            gsap.to(ctaButton.querySelector('.wm-btn-arrow'), {
-              x: x * 0.1,
-              y: y * 0.1,
-              duration: 0.3
-            });
-          });
-          
-          ctaButton.addEventListener('mouseleave', () => {
-            gsap.to(ctaButton, {
-              x: 0,
-              y: 0,
-              duration: 0.5,
-              ease: 'elastic.out(1, 0.5)'
-            });
-            gsap.to(ctaButton.querySelector('.wm-btn-arrow'), {
-              x: 0,
-              y: 0,
-              duration: 0.5
-            });
-          });
-        }
-      }
-    })();
-
-    /* =============================================================================
-       PRICING SECTION - GSAP Animations
-       ============================================================================= */
-    (function() {
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const pricingSection = document.querySelector('#service-pricing');
-        if (!pricingSection) return;
-
-        // Create master timeline
-        const pricingTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: pricingSection,
-            start: 'top 75%',
-            toggleActions: 'play none none none'
-          }
-        });
-
-        // 1. Section Label - Slide in from left with blur
-        const sectionLabel = pricingSection.querySelector('.svc-section-label');
-        if (sectionLabel) {
-          gsap.set(sectionLabel, { opacity: 0, x: -50, filter: 'blur(10px)' });
-          pricingTl.to(sectionLabel, {
-            opacity: 1,
-            x: 0,
-            filter: 'blur(0px)',
-            duration: 0.8,
-            ease: 'power3.out'
-          }, 0);
-        }
-
-        // 2. Section Title - Character by character reveal
-        const sectionTitle = pricingSection.querySelector('.svc-section-title');
-        if (sectionTitle) {
-          const titleText = sectionTitle.innerHTML;
-          const lines = titleText.split('<br>');
-          sectionTitle.innerHTML = lines.map(line => 
-            `<span class="title-line block overflow-hidden">
-              <span class="title-line-inner block">${line}</span>
-             </span>`
-          ).join('');
-          
-          gsap.set(sectionTitle.querySelectorAll('.title-line-inner'), { 
-            y: '100%', 
-            opacity: 0,
-            rotateX: -90
-          });
-          
-          pricingTl.to(sectionTitle.querySelectorAll('.title-line-inner'), {
-            y: '0%',
-            opacity: 1,
-            rotateX: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power4.out'
-          }, 0.2);
-        }
-
-        // 3. Pricing Cards - 3D Flip stagger from bottom
-        const pricingCards = pricingSection.querySelectorAll('.svc-price-item');
-        if (pricingCards.length > 0) {
-          gsap.set(pricingCards, { 
-            opacity: 0, 
-            y: 60,
-            rotateX: -15,
-            transformOrigin: 'center top',
-            transformPerspective: 1000
-          });
-          
-          pricingTl.to(pricingCards, {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 0.9,
-            stagger: {
-              each: 0.15,
-              from: 'start'
-            },
-            ease: 'back.out(1.2)'
-          }, 0.5);
-        }
-
-        // 4. Bottom Info Tags - Fade in with stagger
-        const infoTags = pricingSection.querySelectorAll('.svc-price-info-tag');
-        if (infoTags.length > 0) {
-          gsap.set(infoTags, { opacity: 0, y: 20 });
-          pricingTl.to(infoTags, {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power2.out'
-          }, 1);
-        }
-
-        // 5. Pricing Cards Hover Interactions
-        pricingCards.forEach(card => {
-          const icon = card.querySelector('.svc-price-icon');
-          const ctaBtn = card.querySelector('.svc-price-cta-btn');
-          
-          // 3D tilt effect on mouse move
-          card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            gsap.to(card, {
-              rotateX: rotateX,
-              rotateY: rotateY,
-              transformPerspective: 1000,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-          
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              rotateX: 0,
-              rotateY: 0,
-              duration: 0.5,
-              ease: 'power2.out'
-            });
-          });
-
-          // Icon animation on hover
-          card.addEventListener('mouseenter', () => {
-            gsap.to(icon, {
-              scale: 1.15,
-              rotation: 15,
-              duration: 0.4,
-              ease: 'back.out(1.7)'
-            });
-          });
-
-          card.addEventListener('mouseleave', () => {
-            gsap.to(icon, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.4,
-              ease: 'power3.out'
-            });
-          });
-        });
-      }
-    })();
-
-    /* =============================================================================
-       LATEST NEWS SECTION - Enhanced GSAP Animations
-       ============================================================================= */
-    (function() {
-      if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const newsSection = document.querySelector('#latest-news-section');
-        if (!newsSection) return;
-
-        // Create master timeline
-        const newsTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: newsSection,
-            start: 'top 80%',
-            toggleActions: 'play none none none'
-          }
-        });
-
-        // 1. Section Label - Typewriter + Glow effect
-        const sectionLabel = newsSection.querySelector('.news-section-label');
-        if (sectionLabel) {
-          const labelText = sectionLabel.innerHTML;
-          sectionLabel.innerHTML = '';
-          gsap.set(sectionLabel, { opacity: 1, x: 0 });
-          
-          // Create typewriter effect
-          let charIndex = 0;
-          const typeWriter = () => {
-            if (charIndex < labelText.length) {
-              sectionLabel.innerHTML = labelText.substring(0, charIndex + 1);
-              charIndex++;
-              setTimeout(typeWriter, 30);
-            }
-          };
-          
-          newsTl.add(() => typeWriter(), 0);
-          newsTl.fromTo(sectionLabel, 
-            { opacity: 0, textShadow: '0 0 0px rgba(197, 160, 89, 0)' },
-            { opacity: 1, textShadow: '0 0 20px rgba(197, 160, 89, 0.5)', duration: 0.5 },
-            0.3
-          );
-        }
-
-        // 2. Section Title - Line by line 3D flip reveal
-        const sectionTitle = newsSection.querySelector('.news-section-title');
-        if (sectionTitle) {
-          const originalHTML = sectionTitle.innerHTML;
-          // Split by <br> tags to preserve HTML structure
-          const lines = originalHTML.split(/<br\s*\/?>/i);
-          sectionTitle.innerHTML = lines.map(line => 
-            `<span class="title-line block overflow-hidden">
-              <span class="title-line-inner block">${line.trim()}</span>
-             </span>`
-          ).join('');
-
-          gsap.set(sectionTitle.querySelectorAll('.title-line-inner'), {
-            rotateX: -90,
-            y: 50,
-            opacity: 0,
-            transformOrigin: 'center bottom'
-          });
-
-          newsTl.to(sectionTitle.querySelectorAll('.title-line-inner'), {
-            rotateX: 0,
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            stagger: 0.15,
-            ease: 'power4.out'
-          }, 0.2);
-        }
-
-        // 3. Section Description - Split line reveal with mask
-        const sectionDesc = newsSection.querySelector('.news-section-desc');
-        if (sectionDesc) {
-          gsap.set(sectionDesc, {
-            opacity: 0,
-            y: 40,
-            clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)'
-          });
-          newsTl.to(sectionDesc, {
-            opacity: 1,
-            y: 0,
-            clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
-            duration: 1,
-            ease: 'power4.out'
-          }, 0.5);
-        }
-
-        // 4. Primary Button - Magnetic + Elastic entrance
-        const newsBtn = newsSection.querySelector('.news-btn-primary');
-        if (newsBtn) {
-          gsap.set(newsBtn, { opacity: 0, scale: 0, rotation: -10 });
-          newsTl.to(newsBtn, {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.8,
-            ease: 'elastic.out(1, 0.4)'
-          }, 0.7);
-
-          // Magnetic effect
-          newsBtn.addEventListener('mousemove', (e) => {
-            const rect = newsBtn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            gsap.to(newsBtn, {
-              x: x * 0.3,
-              y: y * 0.3,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-
-          newsBtn.addEventListener('mouseleave', () => {
-            gsap.to(newsBtn, {
-              x: 0,
-              y: 0,
-              duration: 0.5,
-              ease: 'elastic.out(1, 0.3)'
-            });
-          });
-        }
-
-        // 5. News Cards - 3D Flip Entrance with Stagger
-        const newsCards = newsSection.querySelectorAll('.news-card');
-        if (newsCards.length > 0) {
-          gsap.set(newsCards, {
-            opacity: 0,
-            rotateY: -90,
-            x: -100,
-            transformOrigin: 'left center',
-            transformPerspective: 1500
-          });
-
-          newsTl.to(newsCards, {
-            opacity: 1,
-            rotateY: 0,
-            x: 0,
-            duration: 1.2,
-            stagger: {
-              each: 0.2,
-              from: 'start'
-            },
-            ease: 'power3.out',
-            onComplete: function() {
-              // Add revealed class for mask effect
-              newsCards.forEach((card, i) => {
-                setTimeout(() => {
-                  card.classList.add('revealed');
-                }, i * 100);
-              });
-            }
-          }, 0.4);
-        }
-
-        // 6. Parallax Scroll Effect for Cards
-        newsCards.forEach((card, index) => {
-          const image = card.querySelector('.news-card-image');
-          const speed = 0.1 + (index * 0.05);
-          
-          gsap.to(image, {
-            yPercent: 15,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: speed
-            }
-          });
-        });
-
-        // 7. Enhanced 3D Tilt + Magnetic Effect for Cards
-        newsCards.forEach(card => {
-          const image = card.querySelector('.news-card-image');
-          const title = card.querySelector('.news-card-title');
-          const dateBadge = card.querySelector('.news-date-badge');
-          const catTag = card.querySelector('.news-cat-tag');
-          const cardBody = card.querySelector('.news-card-body');
-
-          let rafId = null;
-          let targetRotateX = 0;
-          let targetRotateY = 0;
-          let currentRotateX = 0;
-          let currentRotateY = 0;
-
-          const lerp = (start, end, factor) => start + (end - start) * factor;
-
-          const animate = () => {
-            currentRotateX = lerp(currentRotateX, targetRotateX, 0.1);
-            currentRotateY = lerp(currentRotateY, targetRotateY, 0.1);
-
-            gsap.set(card, {
-              rotateX: currentRotateX,
-              rotateY: currentRotateY,
-              transformPerspective: 1000
-            });
-
-            // Parallax inner elements
-            gsap.set(image, {
-              x: currentRotateY * 0.5,
-              y: currentRotateX * 0.5,
-              scale: 1.1
-            });
-
-            rafId = requestAnimationFrame(animate);
-          };
-
-          card.addEventListener('mouseenter', () => {
-            animate();
-            
-            // Scale up card
-            gsap.to(card, {
-              scale: 1.02,
-              boxShadow: '0 30px 60px rgba(0, 0, 0, 0.15)',
-              duration: 0.4,
-              ease: 'power2.out'
-            });
-
-            // Date badge bounce
-            gsap.to(dateBadge, {
-              scale: 1.15,
-              rotation: 5,
-              duration: 0.4,
-              ease: 'back.out(2)'
-            });
-
-            // Category tag float up
-            gsap.to(catTag, {
-              y: -5,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-
-            // Card body slide up
-            gsap.to(cardBody, {
-              y: -5,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-
-          card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            targetRotateX = (y - centerY) / 20;
-            targetRotateY = (centerX - x) / 20;
-          });
-
-          card.addEventListener('mouseleave', () => {
-            if (rafId) cancelAnimationFrame(rafId);
-            
-            targetRotateX = 0;
-            targetRotateY = 0;
-
-            gsap.to(card, {
-              rotateX: 0,
-              rotateY: 0,
-              scale: 1,
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
-              duration: 0.6,
-              ease: 'elastic.out(1, 0.5)'
-            });
-
-            gsap.to(image, {
-              x: 0,
-              y: 0,
-              scale: 1,
-              duration: 0.5,
-              ease: 'power2.out'
-            });
-
-            gsap.to(dateBadge, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-
-            gsap.to(catTag, {
-              y: 0,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-
-            gsap.to(cardBody, {
-              y: 0,
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          });
-        });
-
-        // 8. Scroll-triggered section parallax
-        gsap.to('.latest-news-section', {
-          backgroundPosition: '50% 100%',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.latest-news-section',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1
-          }
-        });
-      }
-    })();
   </script>
 
 </body>
