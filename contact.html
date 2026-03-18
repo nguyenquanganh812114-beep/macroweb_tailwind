@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ - Macroweb</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Config (must load before Tailwind CDN) -->
+  <script src="assets/js/tailwind.config.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Page Header Styles */
+    .page-header {
+      padding: 180px 0 80px;
+      background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85)), url('assets/images/hero-bg-pc.jpg') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .page-header-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .page-header-title span {
+      color: #C5A059;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-item {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .breadcrumb-item:hover {
+      color: #C5A059;
+    }
+
+    .breadcrumb-item.active {
+      color: #C5A059;
+      font-weight: 500;
+    }
+
+    .breadcrumb-separator {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.8rem;
+    }
+
+    /* Contact Section - Light Theme */
+    .contact-section {
+      padding: 100px 0 20px;
+      background-color: #FDFBF8;
+      color: #1a1a1a;
+      position: relative;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .contact-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Section Title */
+    .contact-section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .contact-section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(197, 160, 89, 0.1);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #C5A059;
+      margin-bottom: 16px;
+    }
+
+    .contact-section-heading {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 16px;
+    }
+
+    .contact-section-heading span {
+      color: #C5A059;
+    }
+
+    .contact-section-desc {
+      font-size: 1.05rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Contact Form Card */
+    .contact-form-card {
+      background: white;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(197, 160, 89, 0.1);
+    }
+
+    .contact-form-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-card p {
+      color: #666;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-label i {
+      color: #C5A059;
+      margin-right: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #333;
+      background: #fafafa;
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #C5A059;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 45px;
+    }
+
+    /* Submit Button */
+    .btn-submit {
+      width: 100%;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #C5A059 0%, #8E6A2F 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(197, 160, 89, 0.35);
+    }
+
+    .btn-submit i {
+      font-size: 1.1rem;
+    }
+
+    /* Map Container */
+    .map-container {
+      background: white;
+      border-radius: 24px;
+      padding: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(197, 160, 89, 0.1);
+      overflow: hidden;
+      height: 100%;
+      min-height: 500px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 484px;
+      border-radius: 16px;
+      border: none;
+    }
+
+    /* CTA Badge Section */
+    .cta-badge-section {
+      padding: 0 0 60px;
+      background-color: #FDFBF8;
+    }
+
+    .cta-badge-container {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-badge-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-badge-content {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-badge-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #C5A059 0%, #8E6A2F 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      flex-shrink: 0;
+      animation: pulse-badge 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(197, 160, 89, 0); }
+    }
+
+    .cta-badge-text h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .cta-badge-text p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+    }
+
+    .cta-badge-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .status-text {
+      color: #22c55e;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .cta-badge-btn {
+      background: white;
+      color: #1a1a1a;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-badge-btn:hover {
+      background: #C5A059;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .page-header {
+        padding: 140px 0 60px;
+      }
+
+      .contact-section {
+        padding: 60px 0;
+      }
+
+      .contact-form-card,
+      .contact-info-card {
+        padding: 28px;
+      }
+
+      .cta-badge-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      .cta-badge-content {
+        flex-direction: column;
+      }
+
+      .cta-badge-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .map-container {
+        min-height: 400px;
+      }
+      
+      .map-container iframe {
+        min-height: 384px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-section-title {
+        margin-bottom: 40px;
+      }
+
+      .map-container {
+        min-height: 350px;
+      }
+      
+      .map-container iframe {
+        min-height: 334px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    ========================================
+    HEADER SECTION
+    ========================================
+  -->
+  <header class="site-header fixed-top" id="siteHeader">
+    <nav class="site-header-navbar navbar navbar-expand-lg">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Brand Logo -->
+        <a class="site-header-brand navbar-brand d-flex align-items-center" href="index.html">
+          <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button
+          class="site-header-custom-toggler navbar-toggler border-0 shadow-none custom-toggler lg:hidden"
+          type="button"
+          id="mobileToggler"
+          aria-label="Toggle navigation">
+          <span class="site-header-toggler-icon toggler-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 7H20" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M4 17H13" stroke="white" stroke-width="2.5" stroke-linecap="round" />
+              <circle cx="19" cy="17" r="2.5" fill="#C5A059" />
+            </svg>
+          </span>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="site-header-nav-collapse navbar-collapse justify-content-center hidden lg:flex" id="site-header-nav">
+          <ul class="site-header-nav-list navbar-nav flex items-center gap-2">
+            <li class="site-header-nav-item nav-item">
+              <a class="site-header-nav-link nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="site-header-nav-item nav-item">
+              <a class="site-header-nav-link nav-link" href="index.html#about-v2-section">Giới thiệu</a>
+            </li>
+
+            <!-- Services Dropdown (Mega Menu) -->
+            <li class="site-header-nav-item nav-item dropdown site-header-dropdown-mega dropdown-mega relative" id="megaMenuTrigger">
+              <a
+                class="site-header-nav-link nav-link dropdown-toggle flex items-center gap-1"
+                href="#"
+                id="site-header-dropdown-pc"
+                role="button"
+                aria-expanded="false">
+                Dịch Vụ
+              </a>
+            </li>
+            <li class="site-header-nav-item nav-item">
+              <a class="site-header-nav-link nav-link" href="blog-list.html">Tin tức</a>
+            </li>
+            <li class="site-header-nav-item nav-item">
+              <a class="site-header-nav-link nav-link active" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA Button (Desktop) -->
+        <div class="hidden lg:block">
+          <a href="#" class="btn btn-gradient">
+            Hồ sơ năng lực <span class="btn-arrow-icon"><i class="fa-solid fa-earth-asia"></i></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mega Menu -->
+  <div class="mega-menu" id="megaMenu">
+    <div class="mega-menu-inner">
+      <!-- Left Panel -->
+      <div class="mega-panel-left">
+        <div class="mega-panel-badge">Hệ sinh thái dịch vụ</div>
+        <h3 class="mega-panel-title">Đột Phá Doanh Thu <br><span>Trên Kỷ Nguyên Số</span></h3>
+        <p class="mega-panel-desc">
+          Chúng tôi không chỉ cung cấp dịch vụ, Macroweb mang đến giải pháp chiến lược tổng thể
+          giúp thương hiệu của bạn dẫn đầu thị trường.
+        </p>
+        <p class="mega-panel-desc">
+          Bằng sự kết hợp giữa tư duy sáng tạo và công nghệ hiện đại, chúng tôi đồng hành cùng
+          doanh nghiệp kiến tạo những giá trị số bền vững và khác biệt.
+        </p>
+        <a href="contact.html" class="mega-panel-cta">
+          Khám phá chi tiết <span class="btn-arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      </div>
+
+      <!-- Right Panel -->
+      <div class="mega-panel-right">
+        <div class="mega-services-grid">
+          <a href="#" class="mega-service-card service-web">
+            <div class="mega-service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="mega-service-body">
+              <h5>Thiết kế Website</h5>
+              <p>Giao diện hiện đại, tối ưu UI/UX, chuẩn SEO & Mobile.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-seo">
+            <div class="mega-service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="mega-service-body">
+              <h5>Dịch vụ SEO</h5>
+              <p>Đưa thương hiệu lên Top Google, tăng trưởng traffic bền vững.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-ads">
+            <div class="mega-service-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <div class="mega-service-body">
+              <h5>Quảng cáo Đa kênh</h5>
+              <p>Google Ads, Facebook Ads tối ưu CPA và tỷ lệ chuyển đổi.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-admin">
+            <div class="mega-service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="mega-service-body">
+              <h5>Vận hành & Bảo trì 24/7</h5>
+              <p>An tâm với dịch vụ quản trì nội dung và bảo mật tuyệt đối.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-server">
+            <div class="mega-service-icon"><i class="fa-solid fa-server"></i></div>
+            <div class="mega-service-body">
+              <h5>Hosting & Cloud Server</h5>
+              <p>Hạ tầng băng thông rộng, tốc độ cao và ổn định 99.9%.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-social">
+            <div class="mega-service-icon"><i class="fa-solid fa-share-nodes"></i></div>
+            <div class="mega-service-body">
+              <h5>Quản trị Fanpage chuyên nghiệp</h5>
+              <p>Sáng tạo nội dung, tăng tương tác và nhận diện thương hiệu.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-branding">
+            <div class="mega-service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <div class="mega-service-body">
+              <h5>Thiết kế Bộ nhận diện</h5>
+              <p>Logo & Branding đẳng cấp, định vị bản sắc doanh nghiệp.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-email">
+            <div class="mega-service-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+            <div class="mega-service-body">
+              <h5>Email Doanh nghiệp</h5>
+              <p>Giải pháp Email tên miền riêng chuyên nghiệp & bảo mật.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-content">
+            <div class="mega-service-icon"><i class="fa-solid fa-pen-fancy"></i></div>
+            <div class="mega-service-body">
+              <h5>Content Marketing sáng tạo</h5>
+              <p>Kể câu chuyện thương hiệu qua nội dung lôi cuốn, giá trị.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+          <a href="#" class="mega-service-card service-total">
+            <div class="mega-service-icon"><i class="fa-solid fa-cubes"></i></div>
+            <div class="mega-service-body">
+              <h5>Giải pháp Digital Trọn gói</h5>
+              <p>Đồng hành toàn diện giúp doanh nghiệp bứt phá doanh thu.</p>
+            </div>
+            <div class="mega-service-arrow"><i class="fa-solid fa-arrow-up-right"></i></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="site-header-glass-offcanvas lg:hidden" id="mobileOffcanvas" tabindex="-1">
+    <div class="offcanvas-backdrop" id="offcanvasBackdrop"></div>
+    <div class="offcanvas-panel" id="offcanvasPanel">
+      <div class="offcanvas-header">
+        <a class="site-header-brand" href="index.html">
+          <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
+        </a>
+        <button type="button" class="offcanvas-close-btn" id="closeOffcanvas" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link" href="index.html"><span>Trang chủ</span></a>
+          </li>
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link" href="index.html#about-v2-section"><span>Giới thiệu</span></a>
+          </li>
+          <li class="mobile-nav-item has-dropdown">
+            <a class="mobile-nav-link dropdown-toggle" href="#" id="mobile-dropdown-toggle" role="button" aria-expanded="false">
+              <span>Dịch Vụ</span>
+              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            </a>
+            <ul class="mobile-dropdown-menu" id="mobile-dropdown-menu">
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-laptop-code"></i>Thiết kế website</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-magnifying-glass-chart"></i>SEO từ khóa</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-bullhorn"></i>Quảng cáo Google/Facebook</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-shield-halved"></i>Quản trị & bảo trì website</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-server"></i>Máy chủ - hosting</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-share-nodes"></i>Thiết kế & Quản lý Fanpage</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-pen-nib"></i>Branding & Thiết kế đồ họa</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-envelope-open-text"></i>Email marketing</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-pen-fancy"></i>Content marketing</a></li>
+              <li><a class="mobile-dropdown-item" href="#"><i class="fa-solid fa-cubes"></i>Dịch vụ trọn gói</a></li>
+            </ul>
+          </li>
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link" href="blog-list.html"><span>Tin tức</span></a>
+          </li>
+          <li class="mobile-nav-item">
+            <a class="mobile-nav-link active" href="contact.html"><span>Liên hệ</span></a>
+          </li>
+          <li class="mobile-nav-item mobile-nav-cta">
+            <a href="#" class="btn btn-gradient w-full justify-center">
+              Nhận tư vấn & báo giá <span class="btn-arrow-icon"><i class="fa-solid fa-paper-plane"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    ========================================
+    PAGE HEADER
+    ========================================
+  -->
+  <section class="page-header">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="page-header-content">
+        <h1 class="page-header-title">Liên <span>Hệ</span></h1>
+        <nav class="breadcrumb">
+          <a href="index.html" class="breadcrumb-item">Trang chủ</a>
+          <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="breadcrumb-item active">Liên hệ</span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    ========================================
+    CONTACT SECTION
+    ========================================
+  -->
+  <main>
+    <section class="contact-section">
+      <div class="container mx-auto px-4 lg:px-8">
+        <!-- Section Title -->
+        <div class="contact-section-title">
+          <div class="contact-section-label">
+            <i class="fa-solid fa-headset"></i> Hỗ trợ khách hàng
+          </div>
+          <h2 class="contact-section-heading">Kết nối với <span>Macroweb</span></h2>
+          <p class="contact-section-desc">Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng doanh nghiệp của bạn. Hãy để lại thông tin để nhận tư vấn miễn phí.</p>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Contact Form -->
+          <div>
+            <div class="contact-form-card">
+              <h3>Gửi yêu cầu tư vấn</h3>
+              <p>Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại trong vòng 24 giờ.</p>
+              
+              <form id="contactForm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Họ tên -->
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fa-solid fa-user"></i>Họ và tên
+                    </label>
+                    <input type="text" class="form-input" placeholder="Nhập họ và tên của bạn" required>
+                  </div>
+                  
+                  <!-- Số điện thoại -->
+                  <div class="form-group">
+                    <label class="form-label">
+                      <i class="fa-solid fa-phone"></i>Số điện thoại
+                    </label>
+                    <input type="tel" class="form-input" placeholder="Nhập số điện thoại" required>
+                  </div>
+                </div>
+
+                <!-- Danh mục dịch vụ -->
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fa-solid fa-briefcase"></i>Dịch vụ quan tâm
+                  </label>
+                  <select class="form-select" required>
+                    <option value="">Chọn dịch vụ bạn quan tâm</option>
+                    <option value="web">Thiết kế Website</option>
+                    <option value="seo">Dịch vụ SEO</option>
+                    <option value="ads">Quảng cáo Đa kênh</option>
+                    <option value="admin">Vận hành & Bảo trì 24/7</option>
+                    <option value="server">Hosting & Cloud Server</option>
+                    <option value="social">Quản trị Fanpage chuyên nghiệp</option>
+                    <option value="branding">Thiết kế Bộ nhận diện</option>
+                    <option value="email">Email Doanh nghiệp</option>
+                    <option value="content">Content Marketing sáng tạo</option>
+                    <option value="total">Giải pháp Digital Trọn gói</option>
+                  </select>
+                </div>
+
+                <!-- Nội dung liên hệ -->
+                <div class="form-group">
+                  <label class="form-label">
+                    <i class="fa-solid fa-message"></i>Nội dung liên hệ
+                  </label>
+                  <textarea class="form-textarea" placeholder="Mô tả nhu cầu của bạn..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">
+                  Gửi yêu cầu tư vấn <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Google Map -->
+          <div>
+            <div class="map-container">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3728.0896754828!2d106.6879186750296!3d20.8626698806951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7a76c1536f3d%3A0x91c138a6f0b8c4e5!2zUGjhu6cgVGjGsMahbmcgxER14bqnbiwgxJDDtG5nIEjhuqNpLCBI4bqjaSBQaMOybmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1709000000000!5m2!1svi!2s" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      ========================================
+      CTA BADGE SECTION - Chat 24/7
+      ========================================
+    -->
+    <section class="cta-badge-section">
+      <div class="container mx-auto px-4 lg:px-8">
+        <div class="cta-badge-container">
+          <div class="cta-badge-content">
+            <div class="cta-badge-icon">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <div class="cta-badge-text">
+              <h4>Chat trực tuyến với tư vấn viên 24/24</h4>
+              <p>Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng hỗ trợ bạn mọi lúc, mọi nơi</p>
+              <div class="cta-badge-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Đang trực tuyến - Phản hồi ngay</span>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="cta-badge-btn">
+            <i class="fa-solid fa-comment-dots"></i> Chat ngay
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--
+    ========================================
+    FOOTER SECTION
+    ========================================
+  -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- CTA Section -->
+      <div class="footer-cta mb-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="footer-cta-content text-center lg:text-left">
+          <div class="footer-cta-badge">
+            <i class="fa-solid fa-lightbulb me-2"></i> Từ ý tưởng đến hiện thực
+          </div>
+          <h2 class="footer-cta-title">BẠN CÓ Ý TƯỞNG? CHÚNG TÔI CÓ GIẢI PHÁP!</h2>
+          <p class="footer-cta-desc">
+            Đừng ngần ngại nếu ý tưởng của quý khách còn mơ hồ hay chưa rõ nét. Chỉ cần một cuộc trò chuyện,
+            Macroweb sẽ luôn đồng hành để đánh thức tiềm năng thương hiệu và biến ý tưởng của mọi khách hàng
+            thành những sản phẩm số hoàn hảo nhất.
+          </p>
+        </div>
+        <div class="footer-cta-action">
+          <a href="contact.html" class="footer-btn-cta">
+            Trò chuyện với chúng tôi <span class="footer-btn-icon"><i class="fa-solid fa-comments"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-white/10">
+        <!-- Company Info -->
+        <div class="lg:col-span-4">
+          <a class="inline-flex items-center mb-6" href="index.html">
+            <img src="assets/images/logo.png" alt="Macroweb Logo" height="72">
+          </a>
+          <p class="text-white/60 pr-8 mb-6 leading-relaxed">
+            Macroweb chuyên cung cấp các giải pháp thiết kế website chuyên nghiệp, UI/UX hiện đại và
+            Marketing tổng thể, giúp doanh nghiệp bứt phá trong kỷ nguyên số.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="footer-social-link" title="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+            <a href="#" class="footer-social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-link" title="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="footer-social-link" title="Youtube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Services Links -->
+        <div class="lg:col-span-2">
+          <h5 class="text-white text-lg font-semibold mb-6">Dịch vụ</h5>
+          <ul class="footer-links space-y-3">
+            <li><a href="#">Thiết kế Website</a></li>
+            <li><a href="#">SEO Từ khóa</a></li>
+            <li><a href="#">Quảng cáo Ads</a></li>
+            <li><a href="#">Quản trị Website</a></li>
+            <li><a href="#">Email Doanh nghiệp</a></li>
+          </ul>
+        </div>
+
+        <!-- Policies Links -->
+        <div class="lg:col-span-3">
+          <h5 class="text-white text-lg font-semibold mb-6">Điều khoản</h5>
+          <ul class="footer-links space-y-3">
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Chính sách thanh toán</a></li>
+            <li><a href="#">Chính sách bảo hành</a></li>
+            <li><a href="#">Chính sách hoàn tiền & hủy dịch vụ</a></li>
+          </ul>
+        </div>
+
+        <!-- App Download -->
+        <div class="lg:col-span-3">
+          <div class="footer-app-card">
+            <div class="flex flex-col gap-3">
+              <button class="footer-btn-app" data-bs-toggle="modal" data-bs-target="#androidModal">
+                <div class="flex items-center">
+                  <i class="fa-brands fa-google-play text-2xl mr-4 text-primary"></i>
+                  <div class="text-left">
+                    <div class="text-xs opacity-75">Tải ứng dụng trên</div>
+                    <div class="font-bold">Android (PWA)</div>
+                  </div>
+                </div>
+              </button>
+              <button class="footer-btn-app" data-bs-toggle="modal" data-bs-target="#iosModal">
+                <div class="flex items-center">
+                  <i class="fa-brands fa-apple text-2xl mr-4 text-primary"></i>
+                  <div class="text-left">
+                    <div class="text-xs opacity-75">Tải ứng dụng trên</div>
+                    <div class="font-bold">iOS / iPhone (PWA)</div>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <p class="text-white/50 text-sm mt-4">*Trải nghiệm hiệu suất mượt mà nhất ngay trên màn hình chính của bạn.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright & Legal -->
+      <div class="py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div>
+              <h6 class="text-white font-bold mb-2">MACROWEB STUDIO</h6>
+              <p class="text-white/50 text-sm mb-1">
+                <i class="fa-solid fa-certificate mr-2 text-primary"></i>
+                Giấy phép kinh doanh số: <strong>8610755221-001</strong>
+              </p>
+              <p class="text-white/50 text-sm mb-1">
+                <i class="fa-solid fa-calendar-check mr-2 text-primary"></i>Ngày cấp: 20/11/2024
+                <i class="fa-solid fa-landmark mr-1 ml-2 text-primary"></i>Đơn vị cấp: UBND Quận Hải An, Thành phố Hải Phòng
+              </p>
+              <p class="text-white/50 text-sm">
+                <i class="fa-solid fa-user-tie mr-2 text-primary"></i>Đại diện: Nguyễn Quang Anh
+                <i class="fa-solid fa-location-dot mr-1 ml-2 text-primary"></i>Địa chỉ: 7/450 Phủ Thượng Đoạn, phường Đông Hải, thành phố Hải Phòng.
+              </p>
+            </div>
+          </div>
+          <div class="lg:col-span-5 text-center lg:text-right">
+            <div>
+              <p class="text-white mb-1">© Bản quyền 2026. Tất cả quyền được bảo lưu.</p>
+              <p class="text-white/50 text-sm mb-3">
+                Website được thiết kế bởi <span class="text-primary font-bold">Macroweb.vn</span>
+              </p>
+              <div class="flex justify-center lg:justify-end gap-3 opacity-75">
+                <i class="fa-brands fa-cc-visa text-2xl" title="Visa"></i>
+                <i class="fa-brands fa-cc-mastercard text-2xl" title="Mastercard"></i>
+                <i class="fa-solid fa-building-columns text-2xl" title="Chuyển khoản ngân hàng"></i>
+                <i class="fa-brands fa-bitcoin text-2xl" title="Bitcoin"></i>
+                <i class="fa-brands fa-ethereum text-2xl" title="Ethereum"></i>
+                <i class="fa-solid fa-coins text-2xl" title="USDT / Crypto"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Android Modal -->
+  <div class="fixed inset-0 z-50 hidden" id="androidModal" tabindex="-1">
+    <div class="absolute inset-0 bg-black/50" id="androidModalBackdrop"></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="glass-modal relative w-full max-w-lg p-0">
+        <div class="p-6 border-b border-white/10 flex items-center">
+          <div class="modal-header-icon mr-4">
+            <i class="fa-brands fa-google-play"></i>
+          </div>
+          <div>
+            <h5 class="text-dark font-bold text-lg mb-0">Cài đặt Android</h5>
+            <p class="text-dark/75 text-sm mb-0">Trải nghiệm ứng dụng PWA</p>
+          </div>
+          <button type="button" class="btn-close ml-auto text-2xl" id="closeAndroidModal" aria-label="Close"></button>
+        </div>
+        <div class="p-6">
+          <div class="space-y-6">
+            <div class="pwa-step">
+              <div class="step-num">01</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Mở menu trình duyệt</h6>
+                <p class="text-dark/75 text-sm">Nhấn vào biểu tượng <strong>ba dấu chấm (⋮)</strong> ở góc trên bên phải của trình duyệt Chrome để mở rộng các tùy chọn.</p>
+              </div>
+            </div>
+            <div class="pwa-step">
+              <div class="step-num">02</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Thêm vào màn hình chính</h6>
+                <p class="text-dark/75 text-sm">Tìm và chọn mục <strong>"Cài đặt ứng dụng"</strong> hoặc <strong>"Thêm vào màn hình chính"</strong> từ danh sách menu hiện ra.</p>
+              </div>
+            </div>
+            <div class="pwa-step">
+              <div class="step-num">03</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Xác nhận cài đặt</h6>
+                <p class="text-dark/75 text-sm">Một cửa sổ xác nhận sẽ hiện lên, hãy nhấn <strong>"Cài đặt"</strong> để ứng dụng xuất hiện ngay trên màn hình chính của bạn.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 pt-0">
+          <button type="button" class="w-full bg-dark text-white rounded-full py-3 font-bold shadow-sm hover:bg-gray-800 transition-colors" id="understoodAndroid">Đã hiểu, tôi sẽ thực hiện ngay!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- iOS Modal -->
+  <div class="fixed inset-0 z-50 hidden" id="iosModal" tabindex="-1">
+    <div class="absolute inset-0 bg-black/50" id="iosModalBackdrop"></div>
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="glass-modal relative w-full max-w-lg p-0">
+        <div class="p-6 border-b border-white/10 flex items-center">
+          <div class="modal-header-icon mr-4">
+            <i class="fa-brands fa-apple"></i>
+          </div>
+          <div>
+            <h5 class="text-dark font-bold text-lg mb-0">Cài đặt iOS</h5>
+            <p class="text-dark/75 text-sm mb-0">Sử dụng Safari trên iPhone/iPad</p>
+          </div>
+          <button type="button" class="btn-close ml-auto text-2xl" id="closeIosModal" aria-label="Close"></button>
+        </div>
+        <div class="p-6">
+          <div class="space-y-6">
+            <div class="pwa-step">
+              <div class="step-num">01</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Mở menu chia sẻ</h6>
+                <p class="text-dark/75 text-sm">Nhấn vào nút <strong>"Chia sẻ"</strong> (biểu tượng ô vuông có mũi tên lên) ở thanh điều hướng phía dưới của Safari.</p>
+              </div>
+            </div>
+            <div class="pwa-step">
+              <div class="step-num">02</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Thêm vào màn hình chính</h6>
+                <p class="text-dark/75 text-sm">Trong menu hiện lên, cuộn xuống dưới và tìm chọn mục <strong>"Thêm vào Màn hình chính"</strong> (Add to Home Screen).</p>
+              </div>
+            </div>
+            <div class="pwa-step">
+              <div class="step-num">03</div>
+              <div>
+                <h6 class="text-dark font-bold mb-1">Hoàn tất cài đặt</h6>
+                <p class="text-dark/75 text-sm">Cuối cùng, hãy nhấn nút <strong>"Thêm"</strong> ở góc trên bên phải để ứng dụng xuất hiện trên màn hình điện thoại của bạn.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 pt-0">
+          <button type="button" class="w-full bg-dark text-white rounded-full py-3 font-bold shadow-sm hover:bg-gray-800 transition-colors" id="understoodIos">Tôi đã nắm rõ quy trình!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Chat Support Widget -->
+  <div class="ai-chat-widget">
+    <div class="ai-chat-pulse"></div>
+    <div class="ai-chat-pulse pulse-delay"></div>
+    <div class="ai-chat-tooltip">Hỗ trợ trực tuyến 24/7</div>
+    <button class="ai-chat-btn" aria-label="Hỗ trợ khách hàng">
+      <span class="ai-status-indicator"></span>
+      <i class="fa-solid fa-headset ai-icon"></i>
+      <i class="fa-solid fa-sparkles ai-sparkle"></i>
+    </button>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
