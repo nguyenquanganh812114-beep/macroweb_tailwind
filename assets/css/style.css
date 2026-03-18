@@ -65,7 +65,7 @@
     }
 
     .site-header.scrolled {
-      background: linear-gradient(to left, rgba(61, 42, 16, 0.85), rgba(0, 0, 0, 0.85));
+      background: linear-gradient(to left, #3D2A10, #1A1A1A);
       padding: 0;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     }
@@ -921,7 +921,6 @@
     .hero-feature-item {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
       border-radius: 20px;
       transition: var(--transition);
       height: 100%;
@@ -1276,11 +1275,14 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
+    .footer-btn-app .fa-google-play,
+    .footer-btn-app .fa-apple {
+      color: var(--primary-color) !important;
+    }
+
     /* Modal Styles */
     .glass-modal {
-      background: rgba(197, 160, 89, 0.7);
-      backdrop-filter: blur(25px) saturate(180%);
-      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      background: #C5A059;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 32px;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
@@ -1772,6 +1774,10 @@
       line-height: 1.2;
       margin-bottom: 25px;
       text-transform: uppercase;
+    }
+
+    .text-primary {
+      color: var(--primary-color) !important;
     }
 
     .about-v2-title .text-primary {
