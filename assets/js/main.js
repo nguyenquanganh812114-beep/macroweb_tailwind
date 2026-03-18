@@ -158,20 +158,21 @@
     (function() {
       const leftTrack = document.getElementById('mb-track-left-content');
       const rightTrack = document.getElementById('mb-track-right-content');
-      
+      const mbSection = document.querySelector('.mb-section');
+
       if (!leftTrack || !rightTrack) return;
 
       // Get the width of one item group for seamless looping
       const leftItemGroup = leftTrack.querySelector('.mb-item-group');
       const rightItemGroup = rightTrack.querySelector('.mb-item-group');
-      
+
       if (!leftItemGroup || !rightItemGroup) return;
 
       const leftWidth = leftItemGroup.offsetWidth;
       const rightWidth = rightItemGroup.offsetWidth;
 
       // Left track animation - scrolling left
-      gsap.to(leftTrack, {
+      const leftAnim = gsap.to(leftTrack, {
         x: -leftWidth,
         duration: 25,
         ease: 'none',
@@ -183,7 +184,7 @@
 
       // Right track animation - scrolling right (reverse)
       gsap.set(rightTrack, { x: -rightWidth });
-      gsap.to(rightTrack, {
+      const rightAnim = gsap.to(rightTrack, {
         x: 0,
         duration: 25,
         ease: 'none',
@@ -199,20 +200,49 @@
 
       if (leftContainer) {
         leftContainer.addEventListener('mouseenter', () => {
-          gsap.globalTimeline.pause();
+          leftAnim.pause();
+          rightAnim.pause();
         });
         leftContainer.addEventListener('mouseleave', () => {
-          gsap.globalTimeline.resume();
+          leftAnim.resume();
+          rightAnim.resume();
         });
       }
 
       if (rightContainer) {
         rightContainer.addEventListener('mouseenter', () => {
-          gsap.globalTimeline.pause();
+          leftAnim.pause();
+          rightAnim.pause();
         });
         rightContainer.addEventListener('mouseleave', () => {
-          gsap.globalTimeline.resume();
+          leftAnim.resume();
+          rightAnim.resume();
         });
+      }
+
+      // Pause when out of viewport using Intersection Observer
+      if (mbSection && 'IntersectionObserver' in window) {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Section is visible - resume animations
+              leftAnim.resume();
+              rightAnim.resume();
+            } else {
+              // Section is not visible - pause animations
+              leftAnim.pause();
+              rightAnim.pause();
+            }
+          });
+        }, observerOptions);
+
+        observer.observe(mbSection);
       }
     })();
 
